@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  django:
+    container_name: EShop
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: EShop_docker
+    stdin_open: true
+    tty: true
+    volumes:
+    - .:/var/www/EShop
+    ports:
+    - "8000:8000"
