@@ -12,6 +12,7 @@ class Product(models.Model):
     description = models.TextField(default="")
     introduction = models.TextField(default="")
     features = models.TextField(default="")
+    in_cart = models.BooleanField(default=False)
     price_buy = models.IntegerField()
     price_sell = models.IntegerField()
     price_sell_no_discount = models.IntegerField()
