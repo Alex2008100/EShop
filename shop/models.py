@@ -10,8 +10,6 @@ class Product(models.Model):
     title = models.CharField(max_length=200)
     brand = models.CharField(max_length=50, default="")
     description = models.TextField(default="")
-    introduction = models.TextField(default="")
-    features = models.TextField(default="")
     in_cart = models.BooleanField(default=False)
     price_buy = models.IntegerField()
     price_sell = models.IntegerField()

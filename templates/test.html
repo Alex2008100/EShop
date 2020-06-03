@@ -1,0 +1,18 @@
+<html lang="zxx">
+
+<body>
+  <button type="button" name="button">Get data</button>
+  <p id="Something"></p>
+  <script>
+    $.ajax({
+      url: 'http://127.0.0.1:8000/api/cart/',
+      success: function(data){
+        alert(data);
+      }
+
+    })
+  </script>
+
+</body>
+
+</html>
