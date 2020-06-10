@@ -1,17 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
 <html lang="zxx">
 
-<body>
-  <button type="button" name="button">Get data</button>
-  <p id="Something"></p>
-  <script>
-    $.ajax({
-      url: 'http://127.0.0.1:8000/api/cart/',
-      success: function(data){
-        alert(data);
-      }
+<head>
+    <title>Test</title>
 
-    })
-  </script>
+    <link rel="stylesheet" href="{% static 'css/jquery.min.css' %}">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+</head>
+
+<body>
+<p id="demo" onclick="myFunction()">Click me to change my text color.</p>
+
+<script>
+    function myFunction() {
+        document.getElementById("demo").style.color = "red";
+        console.log("Hello");
+    }
+</script>
+
+<button type="button" name="button" onclick="myFunction1()">Get data</button>
+<p id="Something"></p>
+<script>
+    function myFunction1(){
+        console.log('Click');
+          $.get("http://127.0.0.1:8000/api/product/", function(data){
+            var object = JSON.parse(data);
+            alert(data);
+            console.log(object[0].title);
+          });
+/*      $.ajax({
+         url: 'http://127.0.0.1:8000/api/product/',
+         success: function(data){
+         alert(data);
+         }
+         })*/
+    }
+</script>
 
 </body>
 
