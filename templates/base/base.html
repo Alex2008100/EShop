@@ -96,7 +96,7 @@
                                 </a>
                             </li>
                             <li class="cart-icon">
-                                <a href="#">
+                                <a href="{% url 'cart' %}">
                                     <i class="icon_bag_alt"></i>
                                     <span>3</span>
                                 </a>
@@ -152,16 +152,13 @@
                 <div class="nav-depart">
                     <div class="depart-btn">
                         <i class="ti-menu"></i>
-                        <span>Serices</span>
+                        <span>Services</span>
                         <ul class="depart-hover">
-                            <li class="active"><a href="#">Women’s Clothing</a></li>
-                            <li><a href="#">Men’s Clothing</a></li>
-                            <li><a href="#">Underwear</a></li>
-                            <li><a href="#">Kid's Clothing</a></li>
-                            <li><a href="#">Brand Fashion</a></li>
-                            <li><a href="#">Accessories/Shoes</a></li>
-                            <li><a href="#">Luxury Brands</a></li>
-                            <li><a href="#">Brand Outdoor Apparel</a></li>
+                            <li class="active"><a href="#"></a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Shops nearby</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="./faq.html">Faq</a></li>
                         </ul>
                     </div>
                 </div>
@@ -176,10 +173,11 @@
 
                                 <!--
                                 <li><a href="{% url 'cart' %}">Shopping Cart</a></li>
-                                <li><a href="./faq.html">Faq</a></li>
+
                                 -->
 
                                 {% if request.user.is_authenticated %}
+                                  <li><a>{{ request.user }}</a></li>
                                   <li><a href="{% url 'logout' %}">Logout</a></li>
                                 {% else %}
                                   <li><a href="{% url 'register' %}">Register</a></li>

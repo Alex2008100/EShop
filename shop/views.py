@@ -32,7 +32,7 @@ def register(request):
             password = form.cleaned_data.get('password')
             user = User.objects.create_user(username = username, email = email, password = password)
             user.save()
-            login(user)
+            login(request, user)
 
         return redirect(index)
     else:
@@ -43,13 +43,17 @@ def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data = request.POST)
         if form.is_valid():
-            #user = form.save(commit = False)
             user = authenticate(request,
                 username = form.cleaned_data.get('username'),
                 password = form.cleaned_data.get('password'))
-            print("User:" + user + " exists")
-            login(request, user)
-            return redirect(to='index')
+            if user and user.is_active:
+                login(request, user)
+                return redirect('index')
+            else:
+                return render(request, 'login.html', {'form':form})
+        else:
+            return render(request, 'login.html', {'form':form})
+
     else:
         form = UserLoginForm()
         return render(request, 'login.html', {'form':form})
