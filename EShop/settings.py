@@ -131,3 +131,11 @@ STATICFILES_DIRS = [
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates'),
 )
+'''
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                            document_root=settings.MEDIA_ROOT)
+'''
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'

@@ -1,44 +1,6 @@
 {% extends "base/base.html" %}
 {% block content %}
-
-    <!-- Hero Section Begin -->
-    <section class="hero-section">
-        <div class="hero-items owl-carousel">
-            <div class="single-hero-items set-bg" data-setbg="img/hero-1.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <span>Bag,kids</span>
-                            <h1>Black friday</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
-                            <a href="#" class="primary-btn">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="single-hero-items set-bg" data-setbg="img/hero-2.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5">
-                            <span>Bag,kids</span>
-                            <h1>Black friday</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore</p>
-                            <a href="#" class="primary-btn">Shop Now</a>
-                        </div>
-                    </div>
-                    <div class="off-card">
-                        <h2>Sale <span>50%</span></h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
+{% load static %}
 
     <!-- Banner Section Begin -->
     <div class="banner-section spad">
@@ -46,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img src="img/banner-1.jpg" alt="">
+                        <img src="{% static 'img/banner-1.jpg' %}" alt="">
                         <div class="inner-text">
                             <h4>Men’s</h4>
                         </div>
@@ -54,7 +16,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img src="img/banner-2.jpg" alt="">
+                        <img src="{% static 'img/banner-2.jpg' %}" alt="">
                         <div class="inner-text">
                             <h4>Women’s</h4>
                         </div>
@@ -62,7 +24,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="single-banner">
-                        <img src="img/banner-3.jpg" alt="">
+                        <img src="{% static 'img/banner-3.jpg' %}" alt="">
                         <div class="inner-text">
                             <h4>Kid’s</h4>
                         </div>
@@ -78,7 +40,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="img/products/women-large.jpg">
+                    <div class="product-large set-bg" data-setbg="{% static 'img/products/women-large.jpg' %}">
                         <h2>Women’s</h2>
                         <a href="#">Discover More</a>
                     </div>
@@ -95,7 +57,7 @@
                     <div class="product-slider owl-carousel">
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/women-1.jpg" alt="">
+                                <img src="{% static 'img/products/women-1.jpg' %}" alt="">
                                 <div class="sale">Sale</div>
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
@@ -119,7 +81,7 @@
                         </div>
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/women-2.jpg" alt="">
+                                <img src="{% static 'img/products/women-2.jpg' %}" alt="">
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
                                 </div>
@@ -141,7 +103,7 @@
                         </div>
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/women-3.jpg" alt="">
+                                <img src="{% static 'img/products/women-3.jpg' %}" alt="">
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
                                 </div>
@@ -163,7 +125,7 @@
                         </div>
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/women-4.jpg" alt="">
+                                <img src="{% static 'img/products/women-4.jpg' %}" alt="">
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
                                 </div>
@@ -191,7 +153,7 @@
     <!-- Women Banner Section End -->
 
     <!-- Deal Of The Week Section Begin -->
-    <section class="deal-of-week set-bg spad" data-setbg="img/time-bg.jpg">
+    <section class="deal-of-week set-bg spad" data-setbg="{% static 'img/time-bg.jpg' %}">
         <div class="container">
             <div class="col-lg-6 text-center">
                 <div class="section-title">
@@ -243,7 +205,7 @@
                     <div class="product-slider owl-carousel">
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/man-1.jpg" alt="">
+                                <img src="{% static 'img/products/man-1.jpg' %}" alt="">
                                 <div class="sale">Sale</div>
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
@@ -267,7 +229,7 @@
                         </div>
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/man-2.jpg" alt="">
+                                <img src="{% static 'img/products/man-2.jpg' %}" alt="">
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
                                 </div>
@@ -289,7 +251,7 @@
                         </div>
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/man-3.jpg" alt="">
+                                <img src="{% static 'img/products/man-3.jpg' %}" alt="">
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
                                 </div>
@@ -311,7 +273,7 @@
                         </div>
                         <div class="product-item">
                             <div class="pi-pic">
-                                <img src="img/products/man-4.jpg" alt="">
+                                <img src="{% static 'img/products/man-4.jpg' %}" alt="">
                                 <div class="icon">
                                     <i class="icon_heart_alt"></i>
                                 </div>
@@ -334,7 +296,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-1">
-                    <div class="product-large set-bg m-large" data-setbg="img/products/man-large.jpg">
+                    <div class="product-large set-bg m-large" data-setbg="{% static 'img/products/man-large.jpg' %}">
                         <h2>Men’s</h2>
                         <a href="#">Discover More</a>
                     </div>
@@ -346,37 +308,37 @@
 
     <!-- Instagram Section Begin -->
     <div class="instagram-photo">
-        <div class="insta-item set-bg" data-setbg="img/insta-1.jpg">
+        <div class="insta-item set-bg" data-setbg="{% static 'img/insta-1.jpg' %}">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
                 <h5><a href="#">colorlib_Collection</a></h5>
             </div>
         </div>
-        <div class="insta-item set-bg" data-setbg="img/insta-2.jpg">
+        <div class="insta-item set-bg" data-setbg="{% static 'img/insta-2.jpg' %}">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
                 <h5><a href="#">colorlib_Collection</a></h5>
             </div>
         </div>
-        <div class="insta-item set-bg" data-setbg="img/insta-3.jpg">
+        <div class="insta-item set-bg" data-setbg="{% static 'img/insta-3.jpg' %}">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
                 <h5><a href="#">colorlib_Collection</a></h5>
             </div>
         </div>
-        <div class="insta-item set-bg" data-setbg="img/insta-4.jpg">
+        <div class="insta-item set-bg" data-setbg="{% static 'img/insta-4.jpg' %}">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
                 <h5><a href="#">colorlib_Collection</a></h5>
             </div>
         </div>
-        <div class="insta-item set-bg" data-setbg="img/insta-5.jpg">
+        <div class="insta-item set-bg" data-setbg="{% static 'img/insta-5.jpg' %}">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
                 <h5><a href="#">colorlib_Collection</a></h5>
             </div>
         </div>
-        <div class="insta-item set-bg" data-setbg="img/insta-6.jpg">
+        <div class="insta-item set-bg" data-setbg="{% static 'img/insta-6.jpg' %}">
             <div class="inside-text">
                 <i class="ti-instagram"></i>
                 <h5><a href="#">colorlib_Collection</a></h5>
@@ -398,7 +360,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-blog">
-                        <img src="img/latest-1.jpg" alt="">
+                        <img src="{% static 'img/latest-1.jpg' %}" alt="">
                         <div class="latest-text">
                             <div class="tag-list">
                                 <div class="tag-item">
@@ -419,7 +381,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-blog">
-                        <img src="img/latest-2.jpg" alt="">
+                        <img src="{% static 'img/latest-2.jpg' %}" alt="">
                         <div class="latest-text">
                             <div class="tag-list">
                                 <div class="tag-item">
@@ -440,7 +402,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-blog">
-                        <img src="img/latest-3.jpg" alt="">
+                        <img src="{% static 'img/latest-3.jpg' %}" alt="">
                         <div class="latest-text">
                             <div class="tag-list">
                                 <div class="tag-item">
@@ -465,7 +427,7 @@
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-1.png" alt="">
+                                <img src="{% static 'img/icon-1.png' %}" alt="">
                             </div>
                             <div class="sb-text">
                                 <h6>Free Shipping</h6>
@@ -476,7 +438,7 @@
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-2.png" alt="">
+                                <img src="{% static 'img/icon-2.png' %}" alt="">
                             </div>
                             <div class="sb-text">
                                 <h6>Delivery On Time</h6>
@@ -487,7 +449,7 @@
                     <div class="col-lg-4">
                         <div class="single-benefit">
                             <div class="sb-icon">
-                                <img src="img/icon-1.png" alt="">
+                                <img src="{% static 'img/icon-1.png' %}" alt="">
                             </div>
                             <div class="sb-text">
                                 <h6>Secure Payment</h6>
@@ -501,38 +463,98 @@
     </section>
     <!-- Latest Blog Section End -->
 
+    {% if not request.user.is_authenticated %}
+    <!-- Register Section Begin -->
+    <div class="register-login-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="register-form">
+                        <h2>Register</h2>
+                        <form action="#">
+                            <div class="group-input">
+                                <label for="username">Username *</label>
+                                <input type="text" name="username">
+                            </div>
+                            <div class="group-input">
+                                <label for="pass">Email *</label>
+                                <input type="text" name="email">
+                            </div>
+                            <div class="group-input">
+                                <label for="con-pass">Password *</label>
+                                <input type="password" id="password">
+                            </div>
+                            <button type="submit" class="site-btn register-btn">REGISTER</button>
+                        </form>
+                        <div class="switch-login">
+                            <a href="{% url 'login' %}" class="or-login">Or Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register Form Section End -->
+    {% endif %}
+
     <!-- Partner Logo Section Begin -->
     <div class="partner-logo">
         <div class="container">
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-1.png" alt="">
+                        <img src="{% static 'img/logo-carousel/logo-1.png' %}" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-2.png" alt="">
+                        <img src="{% static 'img/logo-carousel/logo-2.png' %}" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-3.png" alt="">
+                        <img src="{% static 'img/logo-carousel/logo-3.png' %}" alt="">
+                    </div>
+                <div class="logo-item">
+                    <div class="tablecell-inner">
+                        <img src="{% static 'img/logo-carousel/logo-4.png' %}" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-4.png" alt="">
-                    </div>
-                </div>
-                <div class="logo-item">
-                    <div class="tablecell-inner">
-                        <img src="img/logo-carousel/logo-5.png" alt="">
+                        <img src="{% static 'img/logo-carousel/logo-5.png' %}" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- Partner Logo Section End -->
+
+
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+  $("form").submit(function(){
+    event.preventDefault();
+    $.ajax({
+      type:"post",
+      url:"api_register",
+      data:$(this).serialize(),
+      success:function(data){
+        //alert(data.status);
+        window.location="{% url 'index' %}"
+      },
+      error:function(e){
+        alert(e);
+      }
+    });
+    return False;
+  })
+
+</script>
 
 {% endblock %}
