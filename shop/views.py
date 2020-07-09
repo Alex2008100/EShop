@@ -1,3 +1,4 @@
+#Libraries
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
@@ -11,6 +12,7 @@ from .models import Product
 from .forms import UserRegisterForm, UserLoginForm
 import csv, json
 
+#Main views
 def index(request):
     return render(request, 'index.html', {})
 
@@ -19,9 +21,7 @@ def shop(request):
     return render(request, 'shop.html', {'products':products})
 
 def product(request, pk):
-
     product = get_object_or_404(Product, pk=pk)
-
     return render(request, 'product.html', {'product':product})
 
 def register(request):
@@ -61,28 +61,7 @@ def login_view(request):
         form = UserLoginForm()
         return render(request, 'login.html', {'form':form})
 
-def api_register_view(request):
-    if request.method == 'POST':
-        user = User.objects.create_user(
-            username = request.POST.get('username'),
-            email = request.POST.get('email'),
-            password = request.POST.get('password'))
-        user.save()
-        login(request, user)
-        return JsonResponse({'status':'Registered successfully!'})
-
-
-
-def logout_view(request):
-    logout(request)
-    return redirect('/')
-
-def product_output_test(request):
-    products = Product.objects.all()
-    return render(request, 'test0.html', {'products':products})
-
-#CSV stuff
-
+#Test views
 def simple_upload(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
@@ -93,12 +72,6 @@ def simple_upload(request):
             'uploaded_file_url': uploaded_file_url
         })
     return render(request, 'test.html')
-
-
-def write_view(request):
-    file.open("txt.txt", 'w')
-    file.write("request.user")
-    file.close()
 
 def import_csv(request):
     lines = []
@@ -130,27 +103,37 @@ def import_csv(request):
 
 def export_csv(request):
     products = Product.objects.all()
-
-    def parse_csv():
+    file = []
+    with open('media/csve.csv', 'w') as csvfile:
         for product in products:
-            print(product.price_buy)
-
-    parse_csv()
-    return HttpResponse()
+            line = product.title + ';' + product.brand + ';' + product.description + ';' + product.tag + ';' + str(product.price_buy) + ';' + str(product.price_sell) + ';' + str(product.price_sell_no_discount) + ';' + product.sku + '\n'
+            file.append(line)
+        csvfile.write(''.join(file))
+    csvfile.close()
+    return HttpResponse(file)
 
 def import_json(request):
     try:
-        jsfile = open('media/json.json', 'r')
+        jsfile = open('media/json1.json', 'r')
         raw_data = json.load(jsfile)
-        data = []
-        for id in raw_data:
-            data.append(raw_data[id])
-            print(raw_data[id])
+        for product in raw_data:
+            fields = product.get('fields')
+            print(fields)
+            products = Product.objects.create(
+                title = fields['title'],
+                brand = fields['brand'],
+                description = fields['description'],
+                tag = fields['tag'],
+                price_buy = fields['price_buy'],
+                price_sell = fields['price_sell'],
+                price_sell_no_discount = fields['price_sell_no_discount'],
+                sku = fields['sku'])
+
         jsfile.close()
     except Exception as e:
-        print(e)
+        return HttpResponse(e)
 
-    return HttpResponse(data)
+    return HttpResponse('Finished successfully!')
 
 def export_json(request):
     class encoder(DjangoJSONEncoder):
@@ -175,6 +158,20 @@ def export_json(request):
     print(data)
     return HttpResponse(data)
 
+#Background views
+def api_register_view(request):
+    if request.method == 'POST':
+        user = User.objects.create_user(
+            username = request.POST.get('username'),
+            email = request.POST.get('email'),
+            password = request.POST.get('password'))
+        user.save()
+        login(request, user)
+        return JsonResponse({'status':'Registered successfully!'})
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
 
 '''
 def add_dinner(request):

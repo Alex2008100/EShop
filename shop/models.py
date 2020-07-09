@@ -11,7 +11,7 @@ class Product(models.Model):
     brand = models.CharField(max_length = 50, default = "")
     description = models.TextField(default = "")
     in_cart = models.BooleanField(default = False)
-    image_root = models.ImageField(default = '',upload_to = 'img/')
+    image_root = models.ImageField(default = 'img/product-3_dAtZf9b.jpg',upload_to = 'img/')
     tag = models.CharField(max_length = 50, default = "")
     price_buy = models.FloatField(default = 0)
     price_sell = models.FloatField(default = 0)
@@ -20,4 +20,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
-        
