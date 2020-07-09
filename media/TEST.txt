@@ -1,0 +1,1 @@
+[{\"model\": \"shop.product\", \"pk\": 40, \"fields\": {\"title\": \"test005\", \"brand\": \"brand8\", \"description\": \"9\", \"in_cart\": false, \"image_root\": \"img/products/product-1.jpg\", \"tag\": \"\", \"price_buy\": 980.0, \"price_sell\": 1240.0, \"price_sell_no_discount\": 1240.0, \"sku\": \"105300\"}}

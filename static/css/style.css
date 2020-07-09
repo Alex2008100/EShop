@@ -157,6 +157,7 @@ ol {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: top center;
+	background-image: url('static/img/banner-1.jpg');
 }
 
 .spad {
