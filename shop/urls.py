@@ -12,11 +12,11 @@ urlpatterns = [
     path('login', views.login_view, name='login'),
 
     #Test urls (csv, json), returns test websites
-    path('upload', views.simple_upload),
-    path('i_csv', views.import_csv),
-    path('e_csv', views.export_csv),
-    path('i_json', views.import_json),
-    path('e_json', views.export_json),
+    path('upload', views.simple_upload, name='upload'),
+    path('i_csv', views.import_csv, name='i_csv'),
+    path('e_csv', views.export_csv, name='e_csv'),
+    path('i_json', views.import_json, name='i_json'),
+    path('e_json', views.export_json, name='e_json'),
 
     #Background urls, returns what it says
     path('api_register', views.api_register_view, name='api_register'),

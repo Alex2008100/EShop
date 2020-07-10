@@ -77,7 +77,7 @@ def import_csv(request):
     lines = []
 
     try:
-        with open('media/csv.csv', newline='') as csvfile:
+        with open('media/icsv.csv', newline='') as csvfile:
             spamreader = csv.reader(csvfile, delimiter=' ')
             for row in spamreader:
                 lines.append(row)
@@ -104,7 +104,7 @@ def import_csv(request):
 def export_csv(request):
     products = Product.objects.all()
     file = []
-    with open('media/csve.csv', 'w') as csvfile:
+    with open('media/ecsv.csv', 'w') as csvfile:
         for product in products:
             line = product.title + ';' + product.brand + ';' + product.description + ';' + product.tag + ';' + str(product.price_buy) + ';' + str(product.price_sell) + ';' + str(product.price_sell_no_discount) + ';' + product.sku + '\n'
             file.append(line)
@@ -114,7 +114,7 @@ def export_csv(request):
 
 def import_json(request):
     try:
-        jsfile = open('media/json1.json', 'r')
+        jsfile = open('media/ijson.json', 'r')
         raw_data = json.load(jsfile)
         for product in raw_data:
             fields = product.get('fields')
@@ -152,7 +152,7 @@ def export_json(request):
 
     data = serialize('json', Product.objects.all(), cls = encoder)
     #data = json.dumps(vars(products), sort_keys=False, indent=4)
-    with open('media/data.json', 'w') as outfile:
+    with open('media/ejson.json', 'w') as outfile:
         json.dump(data, outfile)
     outfile.close()
     print(data)
