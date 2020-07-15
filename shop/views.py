@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, login, logout
 from django.core.serializers.json import DjangoJSONEncoder
 from django.core.files.storage import FileSystemStorage
@@ -16,9 +17,22 @@ import csv, json
 def index(request):
     return render(request, 'index.html', {})
 
+@csrf_exempt
 def shop(request):
     products = Product.objects.all()
     return render(request, 'shop.html', {'products':products})
+
+def shop_sorter(request):
+    if request.post = "POST"
+        products = Product.objects.all()
+        data = []
+        for product in products:
+            line = product.title + ';' + product.brand + ';' + product.description + ';' + product.tag + ';' + str(product.price_buy) + ';' + str(product.price_sell) + ';' + str(product.price_sell_no_discount) + ';' + product.sku
+            data.append(line)
+            print(data)
+            return JsonResponse(data)
+        else:
+            return JsonResponse(None)
 
 def product(request, pk):
     product = get_object_or_404(Product, pk=pk)

@@ -20,6 +20,7 @@ urlpatterns = [
 
     #Background urls, returns what it says
     path('api_register', views.api_register_view, name='api_register'),
+    path('shop_sorter', views.shop_sorter, name='sorter'),
     path('logout', views.logout_view, name='logout'),
 
 ]
