@@ -70,7 +70,7 @@
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                             </div>
                         </div>
-                        <a href="#" class="filter-btn">Filter</a>
+                        <button onclick="filter()" class="filter-btn">Filter</button>
                     </div>
                   <div class="filter-widget">
                         <h4 class="fw-title">Tags</h4>
@@ -105,7 +105,9 @@
                     </div>
                     <div class="product-list">
                         <div class="row">
+
                           {% for product in products %} <!-- Products here! -->
+
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
@@ -184,5 +186,31 @@
         </div>
     </div>
     <!-- Partner Logo Section End -->
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+  function filter(){
+    alert('Its working');
+    event.preventDefault();
+    $.ajax({
+      type:"post",
+      url:"shop_sorter",
+      //data:,
+      success:function(data){
+        //alert(data[0]);
+        console.log(data)
+      },
+      error:function(e){
+        alert(e);
+      }
+    });
+    return False;
+  }
+
+</script>
 
 {% endblock %}

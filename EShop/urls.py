@@ -5,12 +5,12 @@ from django.conf import settings
 
 
 urlpatterns = [
-    #Redirect
+    #Redirect to other
     path('', include('shop.urls')),
-    
-    #Other tools
-    path('admin/', admin.site.urls),
     path('cart/', include('cart.urls')),
+
+    #Dev tools
+    path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
 ]
 

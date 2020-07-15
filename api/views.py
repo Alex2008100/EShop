@@ -16,7 +16,5 @@ class ProductInCartListCreate(generics.ListCreateAPIView):
     queryset = ProductInCart.objects.all()
     serializer_class = ProductInCartSerializer
 
-
-
 def test(request):
     return render(request, 'test.html', {})
