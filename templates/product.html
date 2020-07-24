@@ -175,10 +175,10 @@
                                 </div>
                                 <div class="pd-desc">
                                     <p>{{ product.description }}</p>
-                                    <h4>{{ product.price_sell }} <span>{{ price_sell_no_discount }}</span></h4>
+                                    <h4>{{ product.price_sell }} <span>{{ product.price_sell_no_discount }}</span></h4>
                                 </div>
                                       </div>
-                                    <a href="{% url 'add_to_cart' pk=product.id%}" class="primary-btn pd-cart">Add To Cart</a> <!-- Hi! Add to cart here!-->
+                                    <a href="{% url 'add_to_cart' args = (product.id) %}" onclick="add_to_cart({{ product.id }})" class="primary-btn pd-cart">Add To Cart</a> <!-- Hi! Add to cart here!-->
                                 </div>
                             </div>
                         </div>
@@ -382,4 +382,29 @@
     </div>
     <!-- Partner Logo Section End -->
 
-{%  endblock %}
+{% endblock %}
+
+
+{% block js %}
+
+<script>
+
+  function add_to_cart(pk){
+    event.preventDefault();
+    data = {"product": pk}
+    $.ajax({
+      type:"post",
+      url:"{% url 'add_to_cart' %}/{{ product.id }}",
+      data:data,
+      success:function(data){
+        alert("Added to cart")
+      },
+      error:function(e){
+        console.log(JSON.stringify(e));
+      }
+    return False
+    });
+
+</script>
+
+{% endblock %}

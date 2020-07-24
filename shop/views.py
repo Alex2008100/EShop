@@ -20,19 +20,34 @@ def index(request):
 @csrf_exempt
 def shop(request):
     products = Product.objects.all()
-    return render(request, 'shop.html', {'products':products})
 
+    data = [{
+        'title': product.title ,
+        'brand': product.brand ,
+        'tag': product.tag ,
+        'price': product.price_sell ,
+        'price_no_discount': product.price_sell_no_discount
+    } for product in products]
+
+    return render(request, 'shop.html', {'products':data})
+
+@csrf_exempt
 def shop_sorter(request):
-    if request.post = "POST"
-        products = Product.objects.all()
-        data = []
-        for product in products:
-            line = product.title + ';' + product.brand + ';' + product.description + ';' + product.tag + ';' + str(product.price_buy) + ';' + str(product.price_sell) + ';' + str(product.price_sell_no_discount) + ';' + product.sku
-            data.append(line)
-            print(data)
-            return JsonResponse(data)
-        else:
-            return JsonResponse(None)
+
+    products = Product.objects.order_by('price_sell')
+
+    data = [{
+        'id': product.id ,
+        'title': product.title ,
+        'brand': product.brand ,
+        'tag': product.tag ,
+        'price': product.price_sell ,
+        'price_no_discount': product.price_sell_no_discount,
+        'image': product.image_root.url
+    } for product in products]
+
+    #print(data)
+    return JsonResponse(data, safe=False)
 
 def product(request, pk):
     product = get_object_or_404(Product, pk=pk)
@@ -204,4 +219,24 @@ def add_dinner(request):
   "isAdmin": false,
   "wife": null
 }
+'''
+'''
+    def sort(products):
+        print([product.price_sell for product in products])
+        counter = 0
+        for product in products:
+            max_prc = -1
+            max_pos = -1
+            for i in range(len(products)-counter):
+                if products[i].price_sell > max_prc:
+                    max_pos = i
+                    max_prc = products[max_pos].price_sell
+                    max_prd = products[max_pos]
+            products[max_pos] = products[len(products)-counter-1]
+            products[len(products)-counter-1] = max_prd
+            counter += 1
+            print(str(max_pos) + ' ' + str(max_prc))
+            print(products.price_sell)
+
+    sort(products)
 '''
