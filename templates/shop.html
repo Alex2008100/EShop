@@ -5,6 +5,7 @@
     <div class="breacrumb-section">
         <div class="container">
             <div class="row">
+              <!-- Product Shop Section Begin -->
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         <a href="#"><i class="fa fa-home"></i> Home</a>
@@ -16,7 +17,6 @@
     </div>
     <!-- Breadcrumb Section Begin -->
 
-    <!-- Product Shop Section Begin -->
     <section class="product-shop spad">
         <div class="container">
             <div class="row">
@@ -70,7 +70,7 @@
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                             </div>
                         </div>
-                        <button onclick="filter()" class="filter-btn">Filter</button>
+                        <button onclick="render_products()" class="filter-btn">Filter</button>
                     </div>
                   <div class="filter-widget">
                         <h4 class="fw-title">Tags</h4>
@@ -99,44 +99,15 @@
                                 </div>
                             </div>
                             <div class="col-lg-5 col-md-5 text-right">
-                                <p>Show 01- 09 Of 36 Product</p>
+                                <p id="element">Show 01- 09 Of 36 Product</p>
                             </div>
                         </div>
                     </div>
                     <div class="product-list">
-                        <div class="row">
+                        <div class="row" id="product_list">
 
-                          {% for product in products %} <!-- Products here! -->
+                          <!-- Product list here! -->
 
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                      <a href="./product/{{ product.id }}">
-                                        <img src="{{ product.image_root.url }}" alt="">
-                                      </a>
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Towel</div>
-                                        <a href="./product/{{ product.id }}">
-                                            <h5>{{ product.title }}</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            $ {{ product.price_sell}}
-                                            <span>${{ product.price_sell_no_discount }}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
                           </div>
                         </div>
                       </div>
@@ -193,22 +164,59 @@
 
 <script>
 
-  function filter(){
-    alert('Its working');
+  function render_products(){
     event.preventDefault();
     $.ajax({
       type:"post",
       url:"shop_sorter",
       //data:,
       success:function(data){
-        //alert(data[0]);
-        console.log(data)
+        str_data = JSON.stringify(data);
+        product = data;
+        var htmlline = "";
+        console.log(product)
+          for(var i = 0; i < product.length; i++){
+            htmlline += `
+            <div class="col-lg-4 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                      <a href="./product/${ product[i].id }">
+                        <img src="${ product[i].image }" alt="">
+                      </a>
+                        <div class="sale pp-sale">Sale</div>
+                        <div class="icon">
+                            <i class="icon_heart_alt"></i>
+                        </div>
+                        <ul>
+                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                            <li class="quick-view"><a href="#">+ Quick View</a></li>
+                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="pi-text">
+                        <div class="catagory-name">Towel</div>
+                        <a href="./product/${ product[i].id }">
+                            <h5>${ product[i].title }</h5>
+                        </a>
+                        <div class="product-price">
+                            $ ${ product[i].price}
+                            <span>$ ${ product[i].price_no_discount}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+          }
+          console.log(product[0].price);
+          console.log(htmlline);
+          var list = document.getElementById('product_list');
+          list.insertAdjacentHTML('afterbegin', htmlline);
       },
       error:function(e){
-        alert(e);
+        console.log(JSON.stringify(e));
+        alert(JSON.stringify(e));
       }
     });
-    return False;
+
   }
 
 </script>

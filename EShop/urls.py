@@ -7,7 +7,7 @@ from django.conf import settings
 urlpatterns = [
     #Redirect to other
     path('', include('shop.urls')),
-    path('cart/', include('cart.urls')),
+    #path('cart/', include('cart.urls')),
 
     #Dev tools
     path('admin/', admin.site.urls),
